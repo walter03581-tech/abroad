@@ -1,0 +1,768 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtlasWork · Global Careers Abroad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #101815;
+            --ink-soft: #2b3a35;
+            --muted: #6a7d77;
+            --line: #dfe8e4;
+            --paper: #f6f9f7;
+            --white: #ffffff;
+
+            --forest: #0f4c3a;
+            --forest-deep: #0a3528;
+            --lime: #c8f169;
+            --lime-soft: #ecfad0;
+            --clay: #e4643a;
+            --clay-soft: #fdeee7;
+            --sky: #e3f0f7;
+
+            --radius-lg: 26px;
+            --radius-md: 16px;
+            --radius-sm: 11px;
+        }
+
+        body {
+            font-family: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--paper);
+            color: var(--ink);
+            line-height: 1.55;
+            padding-bottom: 3rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1340px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ============ HEADER ============ */
+        .topbar {
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            position: sticky;
+            top: 0;
+            z-index: 90;
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.9rem 0;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            font-weight: 800;
+            font-size: 1.45rem;
+            letter-spacing: -0.035em;
+            color: var(--forest);
+        }
+
+        .brand-globe {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: var(--forest);
+            color: var(--lime);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            position: relative;
+        }
+
+        .brand-globe::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 1.5px dashed rgba(200, 241, 105, 0.45);
+            border-radius: 8px;
+        }
+
+        .brand span {
+            color: var(--clay);
+        }
+
+        .nav {
+            display: flex;
+            gap: 1.9rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .nav a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 0.2rem 0;
+            position: relative;
+        }
+
+        .nav a:hover {
+            color: var(--forest);
+        }
+
+        .nav a.is-active {
+            color: var(--forest);
+        }
+
+        .nav a.is-active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            border-radius: 3px;
+            background: var(--lime);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .mini-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 40px;
+            padding: 0.3rem 0.85rem 0.3rem 0.32rem;
+            font-size: 0.83rem;
+            font-weight: 700;
+            color: var(--ink-soft);
+        }
+
+        .mini-profile .mp-av {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(140deg, var(--forest), var(--clay));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.68rem;
+            font-weight: 800;
+        }
+
+        .icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: var(--white);
+            color: var(--ink-soft);
+            font-size: 0.92rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover {
+            border-color: var(--forest);
+            color: var(--forest);
+            background: var(--paper);
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2.5rem;
+            align-items: center;
+            padding: 3rem 0 2rem;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--lime-soft);
+            color: var(--forest-deep);
+            border: 1px solid rgba(15, 76, 58, 0.14);
+            padding: 0.4rem 0.95rem;
+            border-radius: 40px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-bottom: 1.25rem;
+        }
+
+        .eyebrow i {
+            color: var(--clay);
+            font-size: 0.7rem;
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-weight: 400;
+            font-size: 3.6rem;
+            line-height: 1.06;
+            letter-spacing: -0.02em;
+            color: var(--forest-deep);
+            margin-bottom: 1.1rem;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--clay);
+        }
+
+        .hero h1 .underline {
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .hero h1 .underline::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0.06em;
+            width: 100%;
+            height: 0.14em;
+            background: var(--lime);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .hero-sub {
+            font-size: 1.02rem;
+            color: var(--muted);
+            max-width: 540px;
+            margin-bottom: 1.9rem;
+            line-height: 1.7;
+        }
+
+        .hero-sub strong {
+            color: var(--forest);
+            font-weight: 700;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
+        }
+
+        .btn-primary {
+            background: var(--forest);
+            color: white;
+            border: none;
+            padding: 0.85rem 1.7rem;
+            border-radius: 14px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--forest-deep);
+            box-shadow: 0 12px 24px -10px rgba(15, 76, 58, 0.6);
+        }
+
+        .btn-lime {
+            background: var(--lime);
+            color: var(--forest-deep);
+            border: 1px solid rgba(15, 76, 58, 0.12);
+            padding: 0.85rem 1.6rem;
+            border-radius: 14px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-lime:hover {
+            background: #b9e84f;
+        }
+
+        .hero-metrics {
+            display: flex;
+            gap: 2.3rem;
+            flex-wrap: wrap;
+        }
+
+        .metric .m-num {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.75rem;
+            color: var(--forest);
+            line-height: 1.1;
+        }
+
+        .metric .m-lab {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--muted);
+            margin-top: 0.15rem;
+        }
+
+        /* Hero right - boarding pass style card */
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pass-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 30px 60px -30px rgba(10, 53, 40, 0.35);
+            overflow: hidden;
+            transform: rotate(-1.2deg);
+            transition: transform 0.35s;
+        }
+
+        .pass-card:hover {
+            transform: rotate(0deg) translateY(-5px);
+        }
+
+        .pass-top {
+            background: var(--forest);
+            color: white;
+            padding: 1.4rem 1.5rem 1.6rem;
+            position: relative;
+        }
+
+        .pass-top::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            height: 14px;
+            background: radial-gradient(circle at 10px -4px, transparent 12px, var(--white) 13px);
+            background-size: 22px 22px;
+            background-repeat: repeat-x;
+        }
+
+        .pass-route {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--lime);
+            margin-bottom: 0.6rem;
+        }
+
+        .pass-role {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.55rem;
+            line-height: 1.15;
+            margin-bottom: 0.3rem;
+        }
+
+        .pass-company {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.72);
+            font-weight: 500;
+        }
+
+        .pass-body {
+            padding: 1.3rem 1.5rem 1.5rem;
+        }
+
+        .pass-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.62rem 0;
+            border-bottom: 1px dashed var(--line);
+            font-size: 0.82rem;
+        }
+
+        .pass-detail:last-of-type {
+            border-bottom: none;
+        }
+
+        .pass-detail .pd-label {
+            color: var(--muted);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .pass-detail .pd-label i {
+            color: var(--forest);
+            width: 14px;
+            font-size: 0.75rem;
+        }
+
+        .pass-detail .pd-value {
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .pass-fee {
+            margin-top: 1rem;
+            background: var(--lime-soft);
+            border: 1px dashed rgba(15, 76, 58, 0.25);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--forest-deep);
+        }
+
+        .pass-fee .amount {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.35rem;
+            color: var(--clay);
+        }
+
+        /* ============ SEARCH ============ */
+        .search-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 0.6rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 18px 40px -26px rgba(10, 53, 40, 0.4);
+            margin-bottom: 1.4rem;
+        }
+
+        .search-cell {
+            flex: 1;
+            min-width: 190px;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.5rem 0.9rem;
+        }
+
+        .search-cell i {
+            color: var(--forest);
+            font-size: 0.9rem;
+        }
+
+        .search-cell input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: 0.92rem;
+            width: 100%;
+            color: var(--ink);
+            padding: 0.35rem 0;
+        }
+
+        .search-cell input::placeholder {
+            color: #9aaba5;
+        }
+
+        .v-divider {
+            width: 1px;
+            height: 30px;
+            background: var(--line);
+        }
+
+        .search-go {
+            background: var(--clay);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            font-family: inherit;
+            font-weight: 800;
+            font-size: 0.86rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .search-go:hover {
+            background: #cf5329;
+        }
+
+        /* ============ FILTER PILLS ============ */
+        .filter-strip {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.7rem;
+        }
+
+        .filter-strip .f-label {
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            margin-right: 0.3rem;
+        }
+
+        .pill {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 40px;
+            padding: 0.48rem 1rem;
+            font-family: inherit;
+            font-size: 0.81rem;
+            font-weight: 700;
+            color: var(--ink-soft);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
+        }
+
+        .pill i {
+            font-size: 0.72rem;
+            color: var(--forest);
+            transition: color 0.2s;
+        }
+
+        .pill:hover {
+            border-color: var(--forest);
+        }
+
+        .pill.is-on {
+            background: var(--forest);
+            border-color: var(--forest);
+            color: white;
+        }
+
+        .pill.is-on i {
+            color: var(--lime);
+        }
+
+        /* ============ RESULTS BAR ============ */
+        .results-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .results-bar .count {
+            font-size: 0.88rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .results-bar .count b {
+            color: var(--forest);
+            font-weight: 800;
+        }
+
+        .sort-box {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .sort-box select {
+            border: 1px solid var(--line);
+            background: var(--white);
+            border-radius: 40px;
+            padding: 0.42rem 0.9rem;
+            font-family: inherit;
+            font-size: 0.79rem;
+            font-weight: 700;
+            color: var(--ink-soft);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* ============ JOB GRID ============ */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.3rem;
+        }
+
+        .job {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: 1.55rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.25s;
+            overflow: hidden;
+        }
+
+        .job::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle at top right, var(--lime-soft), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .job:hover {
+            border-color: rgba(15, 76, 58, 0.3);
+            box-shadow: 0 24px 48px -22px rgba(10, 53, 40, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .job:hover::after {
+            opacity: 1;
+        }
+
+        .job-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            margin-bottom: 1.05rem;
+        }
+
+        .job-flag {
+            width: 46px;
+            height: 46px;
+            border-radius: 13px;
+            background: var(--paper);
+            border: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+
+        .job-org {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .job-loc {
+            font-size: 0.76rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-top: 0.15rem;
+            font-weight: 500;
+        }
+
+        .job-loc i {
+            font-size: 0.68rem;
+        }
+
+        .visa-tag {
+            margin-left: auto;
+            font-size: 0.63rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            border: 1px solid transparent;
+        }
+
+        .visa-tag.sponsored {
+            background: #e5f5ec;
+            color: #0c6b45;
+            border-color: #bfe9d4;
+        }
+
+        .visa-tag.local {
+            background: var(--sky);
+            color: #1c5d7e;
+            border-color: #c4e2f2;
+        }
+
+        .visa-tag.urgent {
+            background: var(--clay-soft);
+            color: #b8421c;
+            border-color: #f8d3c4;
+        }
+
+        .job-title {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.42rem;
+            line-height: 1.22;
+            color: var(--forest-deep);
+            margin-bottom: 0.7rem;
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.95rem;
+        }
+
+        .jtag {
+            font-size: 0.71rem;
+            font-weight: 700;
+            color: var(--ink-soft);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 0.27rem 0.62rem;
+            display: flex;
+        
